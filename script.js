@@ -1,5 +1,7 @@
 // Factory Function vs. Constructor vs. Class -
 
+//Factory Function
+
 function createPerson(name) {
   return {
     name,
@@ -14,3 +16,20 @@ const siggy = createPerson("Siggy");
 console.log(me.talk());
 console.log(didi.talk());
 console.log(siggy.talk());
+
+//Constructor
+function Person(name) {
+  this.name = name;
+}
+
+Person.prototype.talk = function () {
+  return `Hello, I am ${this.name}`;
+};
+
+const milo = new Person("Milo");
+console.log(milo.talk());
+
+const cami = new Person("Camila");
+console.log(cami.talk());
+
+// classes are just constuctores
