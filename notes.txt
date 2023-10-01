@@ -1,0 +1,39 @@
+function personFactory(name) {
+  const object = {
+    name,
+    talk() {
+      return `Hello I am  ${this.name}`;
+    },
+  };
+  return object;
+}
+
+const me = personFactory("nico.");
+console.log(me.talk());
+
+const didi = personFactory("Didi Wu TinTin");
+console.log(didi.talk());
+
+const siggy = personFactory("Siggy");
+console.log(siggy.talk());
+// ---------------
+// function creatElement (typeOfElement, textThatGoesInside, colorOfElement )
+function creatElement(type, text, color) {
+  const element = document.createElement(type);
+  element.innerText = text;
+  element.style.color = color;
+  document.body.append(element);
+  return {
+    element,
+    setText(text) {
+      element.innerText = text;
+    },
+    setColor(color) {
+      element.style.color = color;
+    },
+  };
+}
+
+const h1 = creatElement("h1", "Hello I am nico.", "white");
+h1.setColor("black");
+h1.setText("hello I am not nico anymore");
