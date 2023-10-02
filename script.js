@@ -1,35 +1,28 @@
-// Factory Function vs. Constructor vs. Class -
-
-//Factory Function
-
-function createPerson(name) {
-  return {
-    name,
-    talk() {
-      return `Hello my name is ${this.name}`;
-    },
-  };
-}
-const me = createPerson("nico.");
-const didi = createPerson("Didi Wu TinTin");
-const siggy = createPerson("Siggy");
-console.log(me.talk());
-console.log(didi.talk());
-console.log(siggy.talk());
-
-//Constructor
-function Person(name) {
-  this.name = name;
-}
-
-Person.prototype.talk = function () {
-  return `Hello, I am ${this.name}`;
+const personFactory = (name, age) => {
+  const sayHello = () => console.log(`Hello I am ${name}`);
+  return { name, age, sayHello };
 };
 
-const milo = new Person("Milo");
-console.log(milo.talk());
+const nico = personFactory("nico.", 34);
+console.log(nico);
+nico.sayHello();
 
-const cami = new Person("Camila");
-console.log(cami.talk());
+const Person = function (name, age) {
+  this.name = name;
+  this.age = age;
+  this.sayHello = () => {
+    console.log(`Hello, I am ${this.name}`);
+    // console.log(this);
+  };
+};
 
-// classes are just constuctores
+const didi = new Person("didi Wu TiTin", 3);
+console.log(didi);
+didi.sayHello();
+
+let name1 = "nico";
+let num = 34;
+let color = "black";
+let food = "Burger";
+console.log(name1, num, color, food);
+console.log({ name1, num, color, food });
