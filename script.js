@@ -1,66 +1,32 @@
-const factoryFunctions = (string) => {
-  const capString = () => string.toUpperCase();
-  const printString = () => console.log(`---${capString()}---`);
-  return { printString };
+const Person = (name) => {
+  const sayName = () => {
+    console.log(`my name is ${name}.`);
+  };
+  return { sayName };
 };
 
-const milo = factoryFunctions("Milo");
-milo.printString();
+const nico = Person("nico", 34);
+nico.sayName();
 
-const miloFactori = (string) => {
-  const capMilo = () => string.toUpperCase().concat(" FAT");
-  const printMilo = () => {
-    console.log(`<<<<< ${capMilo()} >>>>>`);
+// const Nerd = (name, stuff) => {
+//   const { sayName } = Person(name);
+//   const doSomething = () => {
+//     console.log(`Nerd Stuff: ${stuff}`);
+//   };
+//   return { sayName, doSomething };
+// };
+
+// const milo = Nerd("Milo", "Drink from the toilet");
+// milo.sayName();
+// milo.doSomething();
+
+const Nerd = (name) => {
+  const prototype = Person(name);
+  const doSomething = () => {
+    console.log("Nerd stuff");
   };
-  return { printMilo };
+  return Object.assign({}, prototype, { doSomething });
 };
-
-const nico = miloFactori("nico");
-
-nico.printMilo();
-
-const counterCreator = () => {
-  let count = 0;
-  return () => {
-    console.log(count);
-    count++;
-  };
-};
-const counter = counterCreator();
-
-counter();
-counter();
-counter();
-counter();
-counter();
-
-const Player = (name, level) => {
-  let health = level * 2;
-  const getLevel = () => level;
-  const getName = () => name;
-  const die = () => {
-    console.log("GAME OVER");
-  };
-  const damage = (x) => {
-    health -= x;
-    if (health <= 0) {
-      die();
-    }
-  };
-  const attack = (enemy) => {
-    if (level < enemy.getLevel()) {
-      damage(1);
-      console.log(`${enemy.getName()} has damaged ${name}`);
-    }
-    if (level >= enemy.getLevel()) {
-      enemy.damage(1);
-      console.log(`${name} has damaged ${enemy.getName()}`);
-    }
-  };
-  return { attack, damage, getLevel, getName };
-};
-
-const jimmie = Player("jim", 10);
-const badGuy = Player("jeff", 1);
-jimmie.attack(badGuy);
-jimmie.attack(badGuy);
+const milo = Nerd("Milo", "Drink from the toilet");
+milo.sayName();
+milo.doSomething();
