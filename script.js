@@ -1,32 +1,24 @@
-const Person = (name) => {
-  const sayName = () => {
-    console.log(`my name is ${name}.`);
-  };
-  return { sayName };
+// Object.assign()
+const jsSkill = {
+  knowsJs() {
+    return true;
+  },
 };
 
-const nico = Person("nico", 34);
-nico.sayName();
-
-// const Nerd = (name, stuff) => {
-//   const { sayName } = Person(name);
-//   const doSomething = () => {
-//     console.log(`Nerd Stuff: ${stuff}`);
-//   };
-//   return { sayName, doSomething };
-// };
-
-// const milo = Nerd("Milo", "Drink from the toilet");
-// milo.sayName();
-// milo.doSomething();
-
-const Nerd = (name) => {
-  const prototype = Person(name);
-  const doSomething = () => {
-    console.log("Nerd stuff");
-  };
-  return Object.assign({}, prototype, { doSomething });
+const engDegree = {
+  hasDegree() {
+    return true;
+  },
 };
-const milo = Nerd("Milo", "Drink from the toilet");
-milo.sayName();
-milo.doSomething();
+
+const backendSkill = {
+  knowsBackend() {
+    return true;
+  },
+};
+
+const jsEngeneer = Object.assign({}, jsSkill, engDegree);
+const fullstack = Object.assign({}, jsEngeneer, backendSkill);
+console.log(fullstack.knowsJs());
+console.log(fullstack.hasDegree());
+console.log(fullstack.knowsBackend());
