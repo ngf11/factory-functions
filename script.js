@@ -1,26 +1,20 @@
 //closures
 
-// function outer() {
-//   const outerVar = "Hey I am an outer var";
-//   function inner() {
-//     const innerVar = "Hey I am an inner var";
-//     console.log(innerVar);
-//     console.log(outerVar);
-//   }
-//   return inner;
-// }
-
-// const innerFn = outer();
-// innerFn();
-function createGreeting(greeting = "") {
-  const myGreet = greeting.toUpperCase();
-  return function (name) {
-    return `${myGreet} ${name}`;
+function createGame(gameName) {
+  let score = 0;
+  return function win() {
+    score++;
+    return `Your name  ${gameName} your score ${score} `;
   };
 }
 
-const sayHelloformal = createGreeting("Hello How are you?");
-const sayHelloRude = createGreeting("What Up?");
+const hockeyGame = createGame("Hockey");
+const soccerGame = createGame("Soccer");
 
-console.log(sayHelloRude("nico"));
-console.log(sayHelloformal("nico"));
+console.log(hockeyGame());
+console.log(hockeyGame());
+console.log(hockeyGame());
+console.log(hockeyGame());
+console.log(soccerGame());
+console.log(soccerGame());
+console.log(soccerGame());
