@@ -391,3 +391,13 @@ console.log(hockeyGame());
 console.log(soccerGame());
 console.log(soccerGame());
 console.log(soccerGame());
+
+//Constructors
+function C() {}
+let c = new C();
+console.log(c instanceof C);
+console.log(c.constractor === C());
+console.log("_______");
+C.prototype = { prototype_prop: "proto" };
+console.log(c.constractor === C());
+console.log(c instanceof C);
