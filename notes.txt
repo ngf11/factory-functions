@@ -418,3 +418,16 @@ console.log(nico);
 //   console.log("Start");
 //   const log = (message) => console.log(`[${Date.now()}] Logger: ${message}`);
 // })();
+
+const myModual = {
+  name: "nico",
+  age: 34,
+  sayName() {
+    console.log(` my name is ${this.name}`);
+  },
+  setName(newName) {
+    this.name = newName;
+  },
+};
+myModual.setName("Milo");
+myModual.sayName();
