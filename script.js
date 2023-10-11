@@ -1,1 +1,13 @@
 //closures
+
+let score = (function () {
+  let points = 0;
+  return function () {
+    points++;
+    return points;
+  };
+})();
+
+console.log(score());
+console.log(score());
+console.log(score());
