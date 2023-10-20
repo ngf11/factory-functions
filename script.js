@@ -1,32 +1,36 @@
-const User = function (name) {
-  this.name = name;
-  this.discoreName = "@" + name;
-};
-
-function user(name) {
+function createUser(name) {
   const discoreName = "@" + name;
+  let reputation = 0;
+  const getReputation = () => reputation;
+  const giveReputation = () => reputation++;
   return {
     name,
     discoreName,
+    getReputation,
+    giveReputation,
   };
 }
-console.log(user("nico"));
+const nico = createUser("nico");
+nico.giveReputation();
+nico.giveReputation();
+console.log(nico);
 
-const array = [1, 2, 3, 4, 5];
-const [zerothEle, firstEle] = array;
-console.log(zerothEle, firstEle);
-const nico = {
-  name: "nico",
-  age: 34,
-  born: 1989,
-  place: "Montevideo",
-  lives: "United States",
-};
+console.log({
+  discordName: nico.discoreName,
+  reputation: nico.getReputation(),
+});
+// Prototypal inheritance with factories
+function createPlayer(name, level) {
+  const { discoreName, getReputation } = createUser(name);
+  const increseLevel = () => level++;
+  return { name, discoreName, getReputation, increseLevel };
+}
 
-const { name: choad, age, born, lives } = nico;
-console.log(choad);
-let a = 1;
-let b = 2;
-console.log({ a, b });
-[a, b] = [b, a];
-console.log({ a, b });
+const milo = createPlayer("milo", 3);
+milo.increseLevel();
+milo.increseLevel();
+console.log({
+  name: milo.name,
+  discoreName: milo.discoreName,
+  level: milo.increseLevel(),
+});
