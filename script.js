@@ -1,23 +1,32 @@
-//closures
-
-const factoryFunction = (str) => {
-  const capstr = () => str.toUpperCase();
-  const printStr = () => console.log(`---${capstr()}---`);
-  return { printStr };
+const User = function (name) {
+  this.name = name;
+  this.discoreName = "@" + name;
 };
-const nico = factoryFunction("nico");
-nico.printStr();
 
-const counterCreater = () => {
-  let count = 0;
-  return function () {
-    console.log(count);
-    count++;
+function user(name) {
+  const discoreName = "@" + name;
+  return {
+    name,
+    discoreName,
   };
+}
+console.log(user("nico"));
+
+const array = [1, 2, 3, 4, 5];
+const [zerothEle, firstEle] = array;
+console.log(zerothEle, firstEle);
+const nico = {
+  name: "nico",
+  age: 34,
+  born: 1989,
+  place: "Montevideo",
+  lives: "United States",
 };
 
-const count = counterCreater();
-count();
-count();
-count();
-count();
+const { name: choad, age, born, lives } = nico;
+console.log(choad);
+let a = 1;
+let b = 2;
+console.log({ a, b });
+[a, b] = [b, a];
+console.log({ a, b });
