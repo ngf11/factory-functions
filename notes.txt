@@ -577,3 +577,75 @@ console.log({
   discoreName: milo.discoreName,
   level: milo.increseLevel(),
 });
+const thing = {
+  dna: Math.random(),
+};
+const obj = Object.create(thing);
+console.log(obj);
+console.log(obj.dna);
+
+const obj2 = Object.create({});
+Object.defineProperty(obj2, "milo", {
+  value: "is fat",
+});
+console.log(obj2);
+console.log(obj2.milo);
+const name = "milo";
+const age = 10;
+
+const obj = {
+  name: "nico",
+  age: 34,
+};
+
+const { name: myName, age: myAge } = obj;
+console.log(myName);
+// let a = "you";
+// let b = a;
+// console.log(`a:${a} b:${b}`);
+// a = "me";
+// console.log(`a:${a} b:${b}`);
+let a = { you: "ju" };
+// let b = a;
+// console.log(a, b);
+// a.you = " me";
+// console.log(a, b);
+let b = Object.assign({}, a);
+b.you = "you";
+console.log(a, b);
+function Person(name, age, city) {
+  this.name = name;
+  this.age = age;
+  this.city = city;
+}
+Person.prototype.greet = function () {
+  console.log(`Hi, I am ${this.name}`);
+};
+Person.prototype.form = function () {
+  console.log(`I am from ${this.city}`);
+};
+
+const nico = new Person("nico", 34, "Montevideo");
+console.log(nico);
+console.log(Person.prototype);
+console.log("-------");
+console.log(Object.getPrototypeOf(nico) === Person.prototype);
+
+function UFO(name, age, city, planet) {
+  Person.call(this, name, age, city);
+  this.planet = planet;
+}
+
+UFO.prototype.live = function () {
+  console.log(`I live in ${this.planet}`);
+};
+Object.setPrototypeOf(UFO.prototype, Person.prototype);
+
+const elon = new UFO("elon", 50, "A galaxy far far away", "Mars");
+console.log(Object.getPrototypeOf(UFO.prototype));
+nico.greet();
+nico.form();
+console.log("-----");
+elon.greet();
+elon.live();
+elon.form();
