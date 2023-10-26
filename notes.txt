@@ -649,3 +649,27 @@ console.log("-----");
 elon.greet();
 elon.live();
 elon.form();
+
+const organism = {
+  dna: Math.random(),
+};
+
+const obj = Object.create(organism);
+
+console.log(obj);
+console.log(obj.dna);
+Object.defineProperty(obj, "milo", {
+  value: "fat",
+});
+console.log(obj.milo);
+const name = "nico";
+const age = 34;
+const obj = { name, age };
+console.log(obj);
+const obj = {
+  name: "nico",
+  age: 34,
+  choad: true,
+};
+const { ...choad } = obj;
+console.log(choad);
