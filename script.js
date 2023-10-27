@@ -1,8 +1,32 @@
-const obj = { a: 1, b: 2 };
-const obj1 = { c: 3, d: 4 };
-const obj2 = { e: 5, f: 6 };
-const obj3 = { g: 7, h: 8 };
-const obj4 = { a: 11, b: 22 };
+function createUser(name) {
+  const discordName = "@" + name;
+  let reputation = 0;
+  const getReputation = () => reputation;
+  const giveReputation = () => reputation++;
+  return { name, discordName, getReputation, giveReputation };
+}
 
-const concatObj = Object.assign({}, obj, obj1, obj2, obj3, obj4);
-console.log(concatObj);
+function createPlayer(name) {
+  const { discordName, getReputation } = createUser(name);
+  let level = 0;
+
+  const increseLevel = () => level++;
+  return { name, discordName, getReputation, increseLevel, level };
+}
+const milo = createPlayer("milo");
+milo.increseLevel();
+milo.increseLevel();
+const nico = createUser("nico");
+nico.giveReputation();
+nico.giveReputation();
+console.log(nico);
+console.log({
+  discordName: nico.discordName,
+  reputation: nico.getReputation(),
+});
+console.log({
+  name: milo.name,
+  discordName: milo.discordName,
+  reputation: milo.getReputation(),
+  level: milo.level,
+});
